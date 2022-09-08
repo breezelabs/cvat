@@ -217,11 +217,11 @@ export default class LabelsEditor extends React.PureComponent<LabelsEditorProps,
 
         return (
             <Tabs
-                defaultActiveKey='2'
+                defaultActiveKey='1'
                 type='card'
                 tabBarStyle={{ marginBottom: '0px' }}
             >
-                <Tabs.TabPane
+                {/* <Tabs.TabPane
                     tab={(
                         <span>
                             <EditOutlined />
@@ -231,16 +231,16 @@ export default class LabelsEditor extends React.PureComponent<LabelsEditorProps,
                     key='1'
                 >
                     <RawViewer labels={savedAndUnsavedLabels} onSubmit={this.handleRawSubmit} />
-                </Tabs.TabPane>
+                </Tabs.TabPane> */}
 
                 <Tabs.TabPane
                     tab={(
                         <span>
                             <BuildOutlined />
-                            <Text>Constructor</Text>
+                            <Text>Labels</Text>
                         </span>
                     )}
-                    key='2'
+                    key='1'
                 >
                     {constructorMode === ConstructorMode.SHOW && (
                         <ConstructorViewer

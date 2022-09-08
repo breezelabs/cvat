@@ -21,20 +21,20 @@ function ConstructorViewer(props: ConstructorViewerProps): JSX.Element {
         onCreate, onUpdate, onDelete, labels,
     } = props;
     const list = [
-        <Button key='create' type='ghost' onClick={() => onCreate('basic')} className='cvat-constructor-viewer-new-item'>
-            Add label
-            <PlusCircleOutlined />
-        </Button>,
-        <Button key='create_skeleton' type='ghost' onClick={() => onCreate('skeleton')} className='cvat-constructor-viewer-new-skeleton-item'>
-            Setup skeleton
-            <PlusCircleOutlined />
-        </Button>,
+        // <Button key='create' type='ghost' onClick={() => onCreate('basic')} className='cvat-constructor-viewer-new-item'>
+        //     Add label
+        //     <PlusCircleOutlined />
+        // </Button>,
+        // <Button key='create_skeleton' type='ghost' onClick={() => onCreate('skeleton')} className='cvat-constructor-viewer-new-skeleton-item'>
+        //     Setup skeleton
+        //     <PlusCircleOutlined />
+        // </Button>,
     ];
     for (const label of labels) {
         list.push(
             <ConstructorViewerItem
-                onUpdate={onUpdate}
-                onDelete={onDelete}
+                // onUpdate={onUpdate}
+                // onDelete={onDelete}
                 label={label}
                 key={label.id}
                 color={label.color}

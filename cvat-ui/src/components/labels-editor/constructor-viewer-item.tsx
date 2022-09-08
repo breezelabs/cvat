@@ -25,7 +25,7 @@ export default function ConstructorViewerItem(props: ConstructorViewerItemProps)
     return (
         <div style={{ background: color || consts.NEW_LABEL_COLOR }} className='cvat-constructor-viewer-item'>
             <Text>{label.name}</Text>
-            <CVATTooltip title='Update attributes'>
+            {/* <CVATTooltip title='Update attributes'>
                 <span
                     role='button'
                     tabIndex={0}
@@ -44,7 +44,7 @@ export default function ConstructorViewerItem(props: ConstructorViewerItemProps)
                 >
                     <DeleteOutlined />
                 </span>
-            </CVATTooltip>
+            </CVATTooltip> */}
         </div>
     );
 }

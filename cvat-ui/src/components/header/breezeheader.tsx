@@ -30,7 +30,7 @@ import Text from 'antd/lib/typography/Text';
 import Select from 'antd/lib/select';
 
 import { getCore } from 'cvat-core-wrapper';
-import consts from 'consts';
+import consts from 'breeze_consts';
 
 import { deidLogo } from 'breeze_icons';
 import ChangePasswordDialog from 'components/change-password-modal/change-password-modal';

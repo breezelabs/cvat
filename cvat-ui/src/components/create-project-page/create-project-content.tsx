@@ -163,8 +163,42 @@ export default function CreateProjectContent(): JSX.Element {
                     projectData.training_project = { ...adaptiveAutoAnnotationValues };
                 }
             }
-
-            projectData.labels = projectLabels;
+            console.log('here')
+            // console.log(projectLabels)
+            // console.log('compare')
+            // console.log([
+            //     {
+            //         "name": "cars",
+            //         "color": "#9c97b4",
+            //         "type": "any",
+            //         "attributes": []
+            //     }
+            // ])
+            // projectData.labels = projectLabels;
+            projectData.labels = [{
+                    "name": "vehicle",
+                    "color": "#2f7604",
+                    "type": "any",
+                    "attributes": []
+                },
+                {
+                    "name": "license plate",
+                    "color": "#0074DD",
+                    "type": "any",
+                    "attributes": []
+                },
+                {
+                    "name": "face",
+                    "color": "#fac218",
+                    "type": "any",
+                    "attributes": []
+                },
+                {
+                    "name": "body",
+                    "color": "#6ec3c1",
+                    "type": "any",
+                    "attributes": []
+                }];
 
             const createdProject = await dispatch(createProjectAsync(projectData));
             return createdProject;
@@ -206,7 +240,8 @@ export default function CreateProjectContent(): JSX.Element {
                     <AdaptiveAutoAnnotationForm formRef={adaptiveAutoAnnotationFormRef} />
                 </Col>
             )}
-            <Col span={24}>
+            {/*  */}
+            <Col span={24} style={{ display : "none" }}>
                 <Text className='cvat-text-color'>Labels:</Text>
                 <LabelsEditor
                     labels={projectLabels}
@@ -215,7 +250,7 @@ export default function CreateProjectContent(): JSX.Element {
                     }}
                 />
             </Col>
-            <Col span={24}>
+            <Col span={24} style={{ display : "none" }}>
                 <AdvancedConfigurationForm formRef={advancedFormRef} />
             </Col>
             <Col span={24}>

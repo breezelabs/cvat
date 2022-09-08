@@ -53,13 +53,13 @@ export default function DetailsComponent(props: DetailsComponentProps): JSX.Elem
                         {project.owner ? ` by ${project.owner.username}` : null}
                         {` on ${moment(project.createdDate).format('MMMM Do YYYY')}`}
                     </Text>
-                    <BugTrackerEditor
+                    {/* <BugTrackerEditor
                         instance={project}
                         onChange={(bugTracker): void => {
                             project.bugTracker = bugTracker;
                             dispatch(updateProjectAsync(project));
                         }}
-                    />
+                    /> */}
                 </Col>
                 <Col>
                     <Text type='secondary'>Assigned to</Text>
