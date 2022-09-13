@@ -788,9 +788,9 @@ class OpenCVControlComponent extends React.PureComponent<Props & DispatchToProps
                 </Row>
                 {libraryInitialized ? (
                     <Tabs tabBarGutter={8}>
-                        <Tabs.TabPane key='drawing' tab='Drawing' className='cvat-opencv-control-tabpane'>
+                        {/* <Tabs.TabPane key='drawing' tab='Drawing' className='cvat-opencv-control-tabpane'>
                             {this.renderDrawingContent()}
-                        </Tabs.TabPane>
+                        </Tabs.TabPane> */}
                         <Tabs.TabPane key='image' tab='Image' className='cvat-opencv-control-tabpane'>
                             {this.renderImageContent()}
                         </Tabs.TabPane>

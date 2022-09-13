@@ -261,7 +261,7 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                     />
                 )
             }
-            {
+            {/* {
                 polygonControlVisible && (
                     <ObservedDrawPolygonControl
                         canvasInstance={canvasInstance}
@@ -269,8 +269,8 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                         disabled={controlsDisabled}
                     />
                 )
-            }
-            {
+            } */}
+            {/* {
                 polylineControlVisible && (
                     <ObservedDrawPolylineControl
                         canvasInstance={canvasInstance}
@@ -278,8 +278,8 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                         disabled={controlsDisabled}
                     />
                 )
-            }
-            {
+            } */}
+            {/* {
                 pointsControlVisible && (
                     <ObservedDrawPointsControl
                         canvasInstance={canvasInstance}
@@ -287,8 +287,8 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                         disabled={controlsDisabled}
                     />
                 )
-            }
-            {
+            } */}
+            {/* {
                 ellipseControlVisible && (
                     <ObservedDrawEllipseControl
                         canvasInstance={canvasInstance}
@@ -296,8 +296,8 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                         disabled={controlsDisabled}
                     />
                 )
-            }
-            {
+            } */}
+            {/* {
                 cuboidControlVisible && (
                     <ObservedDrawCuboidControl
                         canvasInstance={canvasInstance}
@@ -305,8 +305,8 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                         disabled={controlsDisabled}
                     />
                 )
-            }
-            {
+            } */}
+            {/* {
                 skeletonControlVisible && (
                     <ObservedDrawSkeletonControl
                         canvasInstance={canvasInstance}
@@ -314,18 +314,18 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                         disabled={controlsDisabled}
                     />
                 )
-            }
-            {
+            } */}
+            {/* {
                 tagControlVisible && (
                     <ObservedSetupTagControl
                         canvasInstance={canvasInstance}
                         disabled={controlsDisabled}
                     />
                 )
-            }
+            } */}
             <hr />
 
-            <ObservedMergeControl
+            {/* <ObservedMergeControl
                 switchMergeShortcut={normalizedKeyMap.SWITCH_MERGE_MODE}
                 canvasInstance={canvasInstance}
                 activeControl={activeControl}
@@ -339,7 +339,7 @@ export default function ControlsSideBarComponent(props: Props): JSX.Element {
                 activeControl={activeControl}
                 groupObjects={groupObjects}
                 disabled={controlsDisabled}
-            />
+            /> */}
             <ObservedSplitControl
                 canvasInstance={canvasInstance}
                 switchSplitShortcut={normalizedKeyMap.SWITCH_SPLIT_MODE}

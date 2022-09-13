@@ -56,7 +56,30 @@ const defaultState = {
         useCache: true,
         sortingMethod: SortingMethod.LEXICOGRAPHICAL,
     },
-    labels: [],
+    labels: [{
+        "name": "vehicle",
+        "color": "#2f7604",
+        "type": "any",
+        "attributes": []
+    },
+    {
+        "name": "license plate",
+        "color": "#0074DD",
+        "type": "any",
+        "attributes": []
+    },
+    {
+        "name": "face",
+        "color": "#fac218",
+        "type": "any",
+        "attributes": []
+    },
+    {
+        "name": "body",
+        "color": "#6ec3c1",
+        "type": "any",
+        "attributes": []
+    }],
     files: {
         local: [],
         share: [],
@@ -389,9 +412,9 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                 {this.renderBasicBlock()}
                 {this.renderProjectBlock()}
                 {this.renderSubsetBlock()}
-                {this.renderLabelsBlock()}
+                {/* {this.renderLabelsBlock()} */}
                 {this.renderFilesBlock()}
-                {this.renderAdvancedBlock()}
+                {/* {this.renderAdvancedBlock()} */}
 
                 <Col span={24} className='cvat-create-task-content-footer'>
                     {loading ? <Alert message={status} /> : this.renderActions()}
