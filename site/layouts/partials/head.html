@@ -13,6 +13,7 @@
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 {{ end -}}
 
+
 {{ partialCached "favicons.html" . }}
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
 <meta name="description" content="{{ .Site.Params.Description }}">

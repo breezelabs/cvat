@@ -202,16 +202,16 @@ function HeaderContainer(props: Props): JSX.Element {
                                 License
                             </a>
                         </Col>
-                        <Col>
+                        {/* <Col>
                             <a href={GITTER_URL} target='_blank' rel='noopener noreferrer'>
                                 Need help?
                             </a>
-                        </Col>
-                        <Col>
+                        </Col> */}
+                        {/* <Col>
                             <a href={FORUM_URL} target='_blank' rel='noopener noreferrer'>
                                 Forum on Intel Developer Zone
                             </a>
-                        </Col>
+                        </Col> */}
                     </Row>
                 </div>
             ),
@@ -380,7 +380,7 @@ function HeaderContainer(props: Props): JSX.Element {
     return (
         <Layout.Header className='cvat-header'>
             <div className='cvat-left-header'>
-                <Icon className='cvat-logo-icon' component={deidLogo} />
+                <Icon className='cvat-logo-icon' component={deidLogo}/>
                 <Button
                     className={getButtonClassName('projects')}
                     type='link'

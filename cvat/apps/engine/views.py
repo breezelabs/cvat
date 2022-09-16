@@ -99,7 +99,8 @@ class ServerViewSet(viewsets.ViewSet):
         about = {
             "name": "Computer Vision Annotation Tool",
             "version": cvat_version,
-            "description": "CVAT is completely re-designed and re-implemented " +
+            "description": "Deid by Breeze Labs has been adapted and modified from CVAT.ai . "+
+                "CVAT is completely re-designed and re-implemented " +
                 "version of Video Annotation Tool from Irvine, California " +
                 "tool. It is free, online, interactive video and image annotation " +
                 "tool for computer vision. It is being used by our team to " +
