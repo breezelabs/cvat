@@ -41,6 +41,9 @@ services:
       ADAPTIVE_AUTO_ANNOTATION: 'false'
       no_proxy: elasticsearch,kibana,logstash,nuclio,opa,${no_proxy}
       NUMPROCS: 1
+      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+      AWS_DEFAULT_REGION: 'ca-central-1'
+      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
     command: -c supervisord/server.conf
     labels:
       - traefik.enable=true

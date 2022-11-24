@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: MIT
 
 from django.contrib import admin
-from .models import Task, Segment, Job, Label, AttributeSpec, Project, CloudStorage
+from .models import Task, Segment, Job, Label, AttributeSpec, Project, CloudStorage, Data, Image, Video
 
 class JobInline(admin.TabularInline):
     model = Job
@@ -101,3 +101,7 @@ admin.site.register(Segment, SegmentAdmin)
 admin.site.register(Label, LabelAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(CloudStorage, CloudStorageAdmin)
+admin.site.register(Data)
+admin.site.register(Image)
+admin.site.register(Video)
+

@@ -34,7 +34,7 @@ export default function ConstructorViewerItem(props: ConstructorViewerItemProps)
                 >
                     <EditOutlined />
                 </span>
-            </CVATTooltip>
+            </CVATTooltip> */}
             <CVATTooltip title='Delete label'>
                 <span
                     role='button'
@@ -44,7 +44,7 @@ export default function ConstructorViewerItem(props: ConstructorViewerItemProps)
                 >
                     <DeleteOutlined />
                 </span>
-            </CVATTooltip> */}
+            </CVATTooltip>
         </div>
     );
 }

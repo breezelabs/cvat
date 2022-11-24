@@ -65,6 +65,7 @@ from cvat.apps.engine.serializers import (
     IssueWriteSerializer, CommentReadSerializer, CommentWriteSerializer, CloudStorageWriteSerializer,
     CloudStorageReadSerializer, DatasetFileSerializer, JobCommitSerializer,
     ProjectFileSerializer, TaskFileSerializer)
+# from cvat.apps.engine.breeze_cloud_upload import get_file_paths, get_labels, connect_to_s3
 
 from utils.dataset_manifest import ImageManifestManager
 from cvat.apps.engine.utils import av_scan_paths
@@ -845,6 +846,9 @@ class TaskViewSet(UploadMixin, AnnotationMixin, viewsets.ModelViewSet, Serialize
             serializer.is_valid(raise_exception=True)
             data = dict(serializer.validated_data.items())
             uploaded_files = task_data.get_uploaded_files()
+            # get_file_paths(uploaded_files)
+            # get_labels(self._object.project.label_set.all())
+            # connect_to_s3(task_data.get_data_dirname())
             uploaded_files.extend(data.get('client_files'))
             serializer.validated_data.update({'client_files': uploaded_files})
 

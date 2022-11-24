@@ -412,7 +412,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                 {this.renderBasicBlock()}
                 {this.renderProjectBlock()}
                 {this.renderSubsetBlock()}
-                {/* {this.renderLabelsBlock()} */}
+                {this.renderLabelsBlock()}
                 {this.renderFilesBlock()}
                 {/* {this.renderAdvancedBlock()} */}
 

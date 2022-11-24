@@ -175,6 +175,7 @@ class AWS_S3(_CloudStorage):
                 endpoint_url=None):
         super().__init__()
         if all([access_key_id, secret_key, session_token]):
+
             self._s3 = boto3.resource(
                 's3',
                 aws_access_key_id=access_key_id,
@@ -184,6 +185,7 @@ class AWS_S3(_CloudStorage):
                 endpoint_url=endpoint_url
             )
         elif access_key_id and secret_key:
+
             self._s3 = boto3.resource(
                 's3',
                 aws_access_key_id=access_key_id,
@@ -195,6 +197,7 @@ class AWS_S3(_CloudStorage):
             raise Exception('Insufficient data for authorization')
         # anonymous access
         if not any([access_key_id, secret_key, session_token]):
+
             self._s3 = boto3.resource('s3', region_name=region, endpoint_url=endpoint_url)
             self._s3.meta.client.meta.events.register('choose-signer.s3.*', disable_signing)
         self._client_s3 = self._s3.meta.client

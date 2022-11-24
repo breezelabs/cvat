@@ -6,6 +6,7 @@ import React, { RefObject } from 'react';
 import { Row, Col } from 'antd/lib/grid';
 import Icon, { DeleteOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import Input from 'antd/lib/input';
+import Radio from 'antd/lib/radio';
 import Button from 'antd/lib/button';
 import Checkbox from 'antd/lib/checkbox';
 import Select from 'antd/lib/select';
@@ -412,6 +413,16 @@ export default class LabelForm extends React.Component<Props> {
     private renderLabelNameInput(): JSX.Element {
         const { label, labelNames, onCancel } = this.props;
         const value = label ? label.name : '';
+        console.log("label names are")
+        console.log(labelNames);
+        const possibleNames = ["vehicle", "license plate", "face", "body"];
+
+        const renderRadioBox = () =>
+        possibleNames.filter(item => !labelNames.includes(item)).map((value) => (
+        <Radio value={value}>
+            {value}
+        </Radio>
+        ));
 
         return (
             <Form.Item
@@ -430,14 +441,14 @@ export default class LabelForm extends React.Component<Props> {
                     {
                         validator: (_rule: any, labelName: string) => {
                             if (labelNames && labelNames.includes(labelName)) {
-                                return Promise.reject(new Error('Label name must be unique for the task'));
+                                return Promise.reject(new Error('Label already exists for the task'));
                             }
                             return Promise.resolve();
                         },
                     },
                 ]}
             >
-                <Input
+                {/* <Input
                     ref={this.inputNameRef}
                     placeholder='Label name'
                     onKeyUp={(event): void => {
@@ -446,7 +457,10 @@ export default class LabelForm extends React.Component<Props> {
                         }
                     }}
                     autoComplete='off'
-                />
+                /> */}
+                <Radio.Group>
+                    {renderRadioBox()}
+                </Radio.Group>
             </Form.Item>
         );
     }
@@ -463,9 +477,17 @@ export default class LabelForm extends React.Component<Props> {
     }
 
     private renderSaveButton(): JSX.Element {
-        const { label } = this.props;
-        const tooltipTitle = label ? 'Save the label and return' : 'Save the label and create one more';
-        const buttonText = label ? 'Done' : 'Continue';
+        const { label, labelNames, onCancel } = this.props;
+
+        var tooltipTitle, buttonText;
+        if(labelNames.length==4){
+            onCancel();
+            return;
+        } else{
+            tooltipTitle = label ? 'Save the label and return' : 'Save the label and create one more';
+            buttonText = label ? 'Done' : 'Save label';
+        }
+
 
         return (
             <CVATTooltip title={tooltipTitle}>
@@ -493,7 +515,7 @@ export default class LabelForm extends React.Component<Props> {
                         onCancel();
                     }}
                 >
-                    Cancel
+                    Return
                 </Button>
             </CVATTooltip>
         );
@@ -558,9 +580,9 @@ export default class LabelForm extends React.Component<Props> {
                     <Col span={3} offset={1}>
                         {this.renderChangeColorButton()}
                     </Col>
-                    <Col offset={1}>
+                    {/* <Col offset={1}>
                         {this.renderNewAttributeButton()}
-                    </Col>
+                    </Col> */}
                 </Row>
                 <Row justify='start' align='top'>
                     <Col span={24}>

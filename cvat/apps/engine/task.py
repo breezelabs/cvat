@@ -491,7 +491,7 @@ def _create_thread(db_task, data, isBackupRestore=False, isDatasetImport=False):
         if not hasattr(update_progress, 'call_counter'):
             update_progress.call_counter = 0
 
-        status_message = 'Images are being compressed'
+        status_message = 'Frames are being pre-processed'
         if not progress:
             status_message = '{} {}'.format(status_message, progress_animation[update_progress.call_counter])
         job.meta['status'] = status_message

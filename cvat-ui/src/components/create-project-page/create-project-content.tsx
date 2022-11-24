@@ -15,6 +15,9 @@ import Form, { FormInstance } from 'antd/lib/form';
 import Button from 'antd/lib/button';
 import Input from 'antd/lib/input';
 import notification from 'antd/lib/notification';
+import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import type { CheckboxValueType } from 'antd/es/checkbox/Group';
+
 
 import patterns from 'utils/validation-patterns';
 import LabelsEditor from 'components/labels-editor/labels-editor';
@@ -144,7 +147,7 @@ export default function CreateProjectContent(): JSX.Element {
 
     const focusForm = (): void => {
         nameInputRef.current?.focus();
-    };
+    };let labels_list =[];
 
     const sumbit = async (): Promise<any> => {
         try {
@@ -163,42 +166,34 @@ export default function CreateProjectContent(): JSX.Element {
                     projectData.training_project = { ...adaptiveAutoAnnotationValues };
                 }
             }
-            console.log('here')
-            // console.log(projectLabels)
-            // console.log('compare')
-            // console.log([
-            //     {
-            //         "name": "cars",
-            //         "color": "#9c97b4",
+
+            projectData.labels = projectLabels;
+
+
+            // projectData.labels = [{
+            //         "name": "vehicle",
+            //         "color": "#2f7604",
             //         "type": "any",
             //         "attributes": []
-            //     }
-            // ])
-            // projectData.labels = projectLabels;
-            projectData.labels = [{
-                    "name": "vehicle",
-                    "color": "#2f7604",
-                    "type": "any",
-                    "attributes": []
-                },
-                {
-                    "name": "license plate",
-                    "color": "#0074DD",
-                    "type": "any",
-                    "attributes": []
-                },
-                {
-                    "name": "face",
-                    "color": "#fac218",
-                    "type": "any",
-                    "attributes": []
-                },
-                {
-                    "name": "body",
-                    "color": "#6ec3c1",
-                    "type": "any",
-                    "attributes": []
-                }];
+            //     },
+            //     {
+            //         "name": "license plate",
+            //         "color": "#0074DD",
+            //         "type": "any",
+            //         "attributes": []
+            //     },
+            //     {
+            //         "name": "face",
+            //         "color": "#fac218",
+            //         "type": "any",
+            //         "attributes": []
+            //     },
+            //     {
+            //         "name": "body",
+            //         "color": "#6ec3c1",
+            //         "type": "any",
+            //         "attributes": []
+            //     }];
 
             const createdProject = await dispatch(createProjectAsync(projectData));
             return createdProject;
@@ -230,6 +225,11 @@ export default function CreateProjectContent(): JSX.Element {
         focusForm();
     }, []);
 
+    const onChange = (checkedValues: CheckboxValueType[]) => {
+        labels_list=checkedValues;
+        console.log('checked = ', checkedValues);
+      };
+
     return (
         <Row justify='start' align='middle' className='cvat-create-project-content'>
             <Col span={24}>
@@ -241,7 +241,8 @@ export default function CreateProjectContent(): JSX.Element {
                 </Col>
             )}
             {/*  */}
-            <Col span={24} style={{ display : "none" }}>
+            {/* <Col span={24} style={{ display : "none" }}> */}
+            <Col span={24}>
                 <Text className='cvat-text-color'>Labels:</Text>
                 <LabelsEditor
                     labels={projectLabels}
@@ -249,6 +250,52 @@ export default function CreateProjectContent(): JSX.Element {
                         setProjectLabels(newLabels);
                     }}
                 />
+                {/* <Checkbox.Group style={{ width: '100%' }} onChange={onChange}>
+                <Row>
+                <Col span={6}>
+                  <Checkbox value="Vehicle">Vehicle</Checkbox>
+                </Col>
+                <Col span={6}>
+                  <Checkbox value="Licence Plate">License Plate</Checkbox>
+                </Col>
+                <Col span={6}>
+                  <Checkbox value="Face">Face</Checkbox>
+                </Col>
+                <Col span={6}>
+                  <Checkbox value="Body">Body</Checkbox>
+                </Col>
+                </Row>
+                </Checkbox.Group> */}
+
+                {/* <LabelsEditor
+                    labels={[{
+                        "name": "vehicle",
+                        "color": "#2f7604",
+                        "type": "any",
+                        "attributes": []
+                    },
+                    {
+                        "name": "license plate",
+                        "color": "#0074DD",
+                        "type": "any",
+                        "attributes": []
+                    },
+                    {
+                        "name": "face",
+                        "color": "#fac218",
+                        "type": "any",
+                        "attributes": []
+                    },
+                    {
+                        "name": "body",
+                        "color": "#6ec3c1",
+                        "type": "any",
+                        "attributes": []
+                    }]} */}
+                    {/* onSubmit={(newLabels): void => {
+                        setProjectLabels(newLabels);
+                    }} */}
+
             </Col>
             <Col span={24} style={{ display : "none" }}>
                 <AdvancedConfigurationForm formRef={advancedFormRef} />
