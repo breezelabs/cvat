@@ -8,7 +8,14 @@ def get_file_paths(files):
     print("hullo i'm printing")
     print(files)
 
+#for api testing
 def get_labels(labels):
+    result=[]
+    for label in labels.values():
+        result.append(label["name"])
+    return result
+
+def get_labels_file(labels):
     # print("this is hopefully the project name")
     # print(labels) #<QuerySet [<Label: body>, <Label: face>, <Label: license plate>, <Label: vehicle>]>
     file=open('labels.txt','w')

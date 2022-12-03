@@ -65,7 +65,7 @@ from cvat.apps.engine.serializers import (
     IssueWriteSerializer, CommentReadSerializer, CommentWriteSerializer, CloudStorageWriteSerializer,
     CloudStorageReadSerializer, DatasetFileSerializer, JobCommitSerializer,
     ProjectFileSerializer, TaskFileSerializer)
-# from cvat.apps.engine.breeze_cloud_upload import get_file_paths, get_labels, connect_to_s3
+from cvat.apps.engine.breeze_cloud_upload import get_labels
 
 from utils.dataset_manifest import ImageManifestManager
 from cvat.apps.engine.utils import av_scan_paths
@@ -1103,6 +1103,13 @@ class TaskViewSet(UploadMixin, AnnotationMixin, viewsets.ModelViewSet, Serialize
         if serializer.is_valid(raise_exception=True):
             return Response(serializer.data)
 
+    @action(detail=True, methods=['GET'])
+    def labels(self, request, pk):
+        db_task = Task.objects.get(pk=pk)
+        db_labels = (db_task.project.label_set if db_task.project_id else db_task.label_set).prefetch_related("attributespec_set").all()
+        # print(db_labels)
+        return Response(get_labels(db_labels))
+
     @staticmethod
     def _get_rq_response(queue, job_id):
         queue = django_rq.get_queue(queue)
@@ -2082,7 +2089,7 @@ def _import_annotations(request, rq_id, rq_func, pk, format_name,
         for f in dm.views.get_import_formats()}.get(format_name)
     if format_desc is None:
         raise serializers.ValidationError(
-            "Unknown input format '{}'".format(format_name))
+            "Unknown input format '{}'".format(f ormat_name))
     elif not format_desc.ENABLED:
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
